@@ -33,7 +33,13 @@ function createWindow () {
   }
 
   // and load the index.html of the app.
-  var url = properties.get('server.url');
+  var url
+  if(process.env.SERVER_URL) { 
+    url = process.env.SERVER_URL;
+  }
+  else { 
+    url = properties.get('server.url');
+  }
   console.log(url)
   mainWindow.loadURL(url)
 
